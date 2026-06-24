@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Quantum Audio 24-Qubit DSP",
+  "version": "1.0",
+  "description": "Эмуляция квантового 24-кубитного расширения звука через WebGPU",
+  "permissions": [
+    "tabCapture",
+    "activeTab",
+    "offscreen",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

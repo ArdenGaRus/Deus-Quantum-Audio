@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            width: 340px;
+            background-color: #0d0e15;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h3 {
+            color: #00f2fe;
+            text-align: center;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+        .card {
+            background: #1a1c28;
+            border: 1px solid #2d3142;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .control-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 11px;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+        .value-display {
+            float: right;
+            color: #00f2fe;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 100%;
+            accent-color: #00f2fe;
+            background: #2d3142;
+            border-radius: 5px;
+        }
+        .btn-group {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 11px;
+        }
+        #startBtn {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            color: #0d0e15;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+        #pauseBtn {
+            background: #eab308;
+            color: #0d0e15;
+        }
+        #stopBtn {
+            background: #ef4444;
+            color: #ffffff;
+        }
+        button:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+        .status {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        .visualizer-container {
+            margin-top: 15px;
+            background: #07080c;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 80px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>Quantum Audio</h3>
+        
+        <div class="control-group">
+            <label>Точность вычислений: <span class="value-display" id="qubitVal">24 Кубита</span></label>
+            <input type="range" id="qubitSlider" min="2" max="24" value="24">
+        </div>
+
+        <div class="control-group">
+            <label>Частота рендера: <span class="value-display" id="hzVal">384 кГц</span></label>
+            <input type="range" id="hzSlider" min="0" max="2" value="2" step="1">
+        </div>
+
+        <!-- Новый блок управления -->
+        <div class="btn-group">
+            <button id="startBtn">ЗАПУСК</button>
+            <button id="pauseBtn">ПАУЗА</button>
+            <button id="stopBtn">СТОП</button>
+        </div>
+        
+        <div class="status" id="statusText">Статус: Ожидание инициализации</div>
+
+        <div class="visualizer-container">
+            <canvas id="quantumCanvas"></canvas>
+        </div>
+
+        <div class="control-group" style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="background: #11131e; border: 1px solid #1e293b; border-radius: 6px; padding: 8px; text-align: center;">
+                <label style="margin: 0; font-size: 10px;">Задержка GPU на сэмпл:</label>
+                <div id="nsValue" style="color: #22c55e; font-size: 14px; font-weight: bold; font-family: monospace; margin-top: 3px;">0.00 нс</div>
+            </div>
+            <div style="background: #11131e; border: 1px solid #1e293b; border-radius: 6px; padding: 8px; text-align: center;">
+                <label style="margin: 0; font-size: 10px;">Скорость буфера (FPS):</label>
+                <div id="fpsValue" style="color: #a855f7; font-size: 14px; font-weight: bold; font-family: monospace; margin-top: 3px;">0.00 Гц</div>
+            </div>
+        </div>
+
+        <div class="control-group" style="margin-top: 15px;">
+            <label>Телеметрия квантового ядра (GPU):</label>
+            <div id="consoleLog" style="height: 100px; background: #07080c; border: 1px solid #1e293b; border-radius: 6px; padding: 8px; font-family: monospace; font-size: 10px; color: #38bdf8; overflow-y: auto; white-space: pre-wrap; line-height: 1.4;">[Система] Ожидание инициализации...</div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
