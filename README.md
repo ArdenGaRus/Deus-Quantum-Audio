@@ -49,6 +49,14 @@ This custom Chrome extension captures real-time audio streams (from VK, YouTube,
 
 ## 📊 Telemetry Protocol (Live Capture)
 
+<img width="466" height="733" alt="3 st" src="https://github.com/user-attachments/assets/0ccef9ef-4eea-4299-a90a-e9b5de1df1fa" />
+
+<img width="452" height="703" alt="4 st" src="https://github.com/user-attachments/assets/3dd922a3-1906-462b-a17f-d454f84c5676" />
+
+<img width="469" height="732" alt="1 st" src="https://github.com/user-attachments/assets/674ed735-71e1-4d73-b13c-0f4a4f3601a6" />
+
+<img width="472" height="694" alt="2 st" src="https://github.com/user-attachments/assets/365d741d-341b-44f1-babe-db5ef5521147" />
+
 ```text
 [System] Awaiting initialization...
 [23:03:48] Stable. Processed: 7.97M samples. System load: NORMAL.
