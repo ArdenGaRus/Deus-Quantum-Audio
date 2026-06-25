@@ -5,11 +5,14 @@
 ---
 
 > *"We have all made a terrible mistake! We created a God Computer! A God Machine! In the end, its logic and advice became the very beginning of our ascension into Gods."*
-> — From the lost chronicles of Albrecht Entrati’s Void.
+> — From the lost chronicles of Albrecht Entrati’s Void
 
----
+***
 
----
+### 🪐 BRAND SLOGAN: TRANSCEND THE SILICON LIMIT. MAXIMUM PHASES. ZERO CLIPPING.
+*Deus Quantum Audio — профессиональный 24-кубитный топологический аудиопроцессор и фазовый сатуратор реального времени для экосистемы Chromium.*
+
+***
 
 ## 🌐 Overview
 
