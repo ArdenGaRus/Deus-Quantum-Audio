@@ -1,7 +1,8 @@
 let currentEngineState = {
     state: 'stopped', // stopped, active, paused
     qubits: 24,
-    hz: 384000
+    hz: 384000,
+    topology: 0 // 0: Flat, 1: Icosahedron, 2: Fractal, 3: Star
 };
 
 chrome.runtime.onMessage.addListener(async (message) => {
@@ -14,7 +15,22 @@ chrome.runtime.onMessage.addListener(async (message) => {
                   currentEngineState.state === 'paused' ? "Статус: На ПАУЗЕ (Обход)" : "Статус: Выключен",
             state: currentEngineState.state,
             qubits: currentEngineState.qubits,
-            hz: currentEngineState.hz
+            hz: currentEngineState.hz,
+            topology: currentEngineState.topology
+        });
+        return;
+    }
+
+    // Динамическое обновление параметров "на лету" без перезапуска потока захвата
+    if (message.type === 'control-quantum' && message.action === 'update-params') {
+        if (message.qubits !== undefined) currentEngineState.qubits = message.qubits;
+        if (message.topology !== undefined) currentEngineState.topology = message.topology;
+        
+        chrome.runtime.sendMessage({
+            target: 'offscreen',
+            type: 'update-runtime-params',
+            qubits: currentEngineState.qubits,
+            topology: currentEngineState.topology
         });
         return;
     }
@@ -23,7 +39,15 @@ chrome.runtime.onMessage.addListener(async (message) => {
         const contexts = await chrome.runtime.getContexts({ contextTypes: ['OFFSCREEN_DOCUMENT'] });
         
         if (contexts.length > 0 && currentEngineState.state !== 'stopped') {
-            chrome.runtime.sendMessage({ target: 'popup', type: 'status-update', text: "Статус: АКТИВЕН", state: 'active', qubits: currentEngineState.qubits, hz: currentEngineState.hz });
+            chrome.runtime.sendMessage({ 
+                target: 'popup', 
+                type: 'status-update', 
+                text: "Статус: АКТИВЕН", 
+                state: 'active', 
+                qubits: currentEngineState.qubits, 
+                hz: currentEngineState.hz,
+                topology: currentEngineState.topology
+            });
             return;
         }
 
@@ -44,13 +68,15 @@ chrome.runtime.onMessage.addListener(async (message) => {
             currentEngineState.state = 'active';
             currentEngineState.qubits = message.qubits;
             currentEngineState.hz = message.hz;
+            currentEngineState.topology = message.topology !== undefined ? message.topology : 0;
 
             chrome.runtime.sendMessage({
                 target: 'offscreen',
                 type: 'start-capture',
                 streamId: streamId,
                 qubits: message.qubits,
-                hz: message.hz
+                hz: message.hz,
+                topology: currentEngineState.topology
             });
         });
     }
