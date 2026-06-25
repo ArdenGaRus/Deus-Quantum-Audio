@@ -9,20 +9,6 @@
 
 ---
 
-<p align="center">
-  <br>
-  <img src="https://shields.io" />
-  <img src="https://shields.io" />
-  <img src="https://shields.io" />
-  <br><br>
-  <b>🪐 DEUS QUANTUM AUDIO BRANDING DIRECTIVE 🪐</b>
-  <br><br>
-  <strong>TRANSCEND THE SILICON LIMIT. MAXIMUM PHASES. ZERO CLIPPING.</strong>
-  <br>
-  <i>Профессиональный 24-кубитный топологический аудиопроцессор и фазовый сатуратор реального времени для экосистемы Chromium.</i>
-  <br><br>
-</p>
-
 ---
 
 ## 🌐 Overview
