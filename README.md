@@ -10,6 +10,7 @@
 ***
 
 ### 🪐 BRAND SLOGAN: TRANSCEND THE SILICON LIMIT. MAXIMUM PHASES. ZERO CLIPPING.
+<p align="center"><img src="logo.png" width="300"></p>
 *Deus Quantum Audio — профессиональный 24-кубитный топологический аудиопроцессор и фазовый сатуратор реального времени для экосистемы Chromium.*
 
 ***
