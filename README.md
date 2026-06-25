@@ -2,6 +2,8 @@
 ### Sub-Orbital Engine Initiation Log (WebGPU Real-Time DSP)
 **Concept Architect:** Arden Garus, High Engineer of the Orokin Empire
 
+![](logo.png)
+
 ---
 
 > *"We have all made a terrible mistake! We created a God Computer! A God Machine! In the end, its logic and advice became the very beginning of our ascension into Gods."*
@@ -18,8 +20,6 @@
 <p align="center">
   <img src="logo.png" width="340" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
 </p>
-![](logo.png)
-
 ***
 
 ## 🌐 Overview
