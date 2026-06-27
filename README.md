@@ -1,4 +1,5 @@
 # 🌌 PROJECT: DEUS QUANTUM AUDIO
+
 <img src="./cover.JPG" width="100%" alt="Deus Quantum Audio Cover">
 
 ### Sub-Orbital Engine Initiation Log (WebGPU Real-Time DSP)
